@@ -1,13 +1,34 @@
-import React, { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import { render } from 'react-dom';
+import './style.css';
 
-import App from './App';
+const nombres = ['Uriel', 'Gabriel', 'Antonio', 'Josimar'];
 
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+function getNombres() {
+  const elementosListas = [];
+  for (var i = 0; i < nombres.length; i++) {
+    elementosListas.push(<li>{nombres[i]}</li>);
+  }
+  console.log(elementosListas);
+  return elementosListas;
+}
 
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+const Nombres = () => {
+  return (
+    <ul>
+      {nombres.map((nombre, index) => (
+        <li key={index}>{nombre}</li>
+      ))}
+    </ul>
+  );
+};
+
+const App = () => {
+  return (
+    <h1>
+      <Nombres />
+    </h1>
+  );
+};
+
+render(<App />, document.getElementById('root'));
