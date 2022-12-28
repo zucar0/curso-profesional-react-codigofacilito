@@ -4,10 +4,22 @@ import './style.css';
 
 // const App = () => <h1>Hola mundo</h1>;
 
-class App extends Component {
-  render() {
-    return <h1>Holamundo</h1>;
-  }
-}
+const Saludar = ({ nombre, idioma = 'es-mx' }) => {
+  console.log(idioma);
+  const saludo = idioma === 'es' ? 'Hola' : 'Hello';
+  return (
+    <p>
+      {saludo} {nombre}
+    </p>
+  );
+};
+
+const App = () => {
+  return (
+    <div>
+      <Saludar nombre="Antonio" />
+    </div>
+  );
+};
 
 render(<App />, document.getElementById('root'));
