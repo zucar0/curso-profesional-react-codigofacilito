@@ -1,34 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { render } from 'react-dom';
 import './style.css';
 
-const nombres = ['Uriel', 'Gabriel', 'Antonio', 'Josimar'];
+// const App = () => <h1>Hola mundo</h1>;
 
-function getNombres() {
-  const elementosListas = [];
-  for (var i = 0; i < nombres.length; i++) {
-    elementosListas.push(<li>{nombres[i]}</li>);
+class App extends Component {
+  render() {
+    return <h1>Holamundo</h1>;
   }
-  console.log(elementosListas);
-  return elementosListas;
 }
-
-const Nombres = () => {
-  return (
-    <ul>
-      {nombres.map((nombre, index) => (
-        <li key={index}>{nombre}</li>
-      ))}
-    </ul>
-  );
-};
-
-const App = () => {
-  return (
-    <h1>
-      <Nombres />
-    </h1>
-  );
-};
 
 render(<App />, document.getElementById('root'));
