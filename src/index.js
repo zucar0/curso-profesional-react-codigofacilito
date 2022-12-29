@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { render } from 'react-dom';
 import './style.css';
 
-// const App = () => <h1>Hola mundo</h1>;
-
-const Saludar = ({ nombre, idioma = 'es-mx' }) => {
-  console.log(idioma);
-  const saludo = idioma === 'es' ? 'Hola' : 'Hello';
-  return (
-    <p>
-      {saludo} {nombre}
-    </p>
-  );
+const Button = () => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    console.log('Me ejecuté');
+    return () => {
+      console.log('Adiós');
+    };
+  }, []);
+  return <button onClick={() => setCount(count + 1)}>Click {count}</button>;
 };
 
 const App = () => {
+  const [showButton, setShowButton] = useState(true);
   return (
     <div>
-      <Saludar nombre="Antonio" />
+      <button onClick={() => setShowButton(false)}>Eliminar botón</button>
+      <div>{showButton && <Button />}</div>
     </div>
   );
 };
